@@ -4,16 +4,20 @@ import { TextInput } from "react-native-gesture-handler";
  
 export default function App(){
   //Estado para armazenar os dados do formulário
-  const [nome, setNome] = useState('');
+  const [nome, setNome] = useState('')
+  const [cargo, setCargo] = useState('');
   const [idade, setIdade] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
+  const [data_admissão, setData_Admissão] = useState('');
   const [resultado, setResultado] = useState('');
  
   const mostrarResultado =()=>
     {
-      if(nome && idade){
-      setResultado(`Nome: ${nome}, Idade: ${idade}`);
+      if(nome && cargo && idade && telefone && email && data_admissão){
+      setResultado(` Nome: ${nome }, Cargo: ${cargo}, Idade: ${idade},\n Telefone: ${telefone}, E-mail: ${email}, Data_Admissão: ${data_admissão}`);
       }else{
-        setResultado("Por favor, preencha os campos");
+        alert("Por favor, preencha os campos");
       }
       };
  
@@ -28,12 +32,40 @@ export default function App(){
         value={nome}
         onChangeText={setNome}
       />
- 
+
+      <TextInput
+      style={styles.input}
+        placeholder="Cargo"
+        value={cargo}
+        onChangeText={setCargo}
+      />
+
       <TextInput
           style={styles.input}
         placeholder="Idade"
         value={idade}
         onChangeText={setIdade}
+      />
+
+       <TextInput
+          style={styles.input}
+        placeholder="Telefone"
+        value={telefone}
+        onChangeText={setTelefone}
+      />
+
+       <TextInput
+          style={styles.input}
+        placeholder="E-mail"
+        value={email}
+        onChangeText={setEmail}
+      />
+
+<TextInput
+          style={styles.input}
+        placeholder="Data_Admissão"
+        value={data_admissão}
+        onChangeText={setData_Admissão}
       />
  
       <Button title="Cadastro"
